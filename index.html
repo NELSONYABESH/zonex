@@ -202,7 +202,386 @@ From early-stage startups to growing brands, we partner with teams that care abo
         </div>
         <!-- Service End -->
 
+ <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+  :root {
+    --blue: #2a52d4;
+    --blue-dark: #1a3aae;
+    --blue-light: #eef2ff;
+    --text: #1e2d4d;
+    --gray: #64748b;
+    --border: #e2e8f0;
+    --white: #ffffff;
+    --bg: #f8faff;
+  }
+ 
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+  }
+ 
+  /* ── PRICING SECTION ── */
+  .pricing-section {
+    padding: 80px 7vw;
+    text-align: center;
+    background: var(--bg);
+  }
+ 
+  /* ── SECTION HEADER — matches uploaded image style ── */
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 14px;
+  }
+  .section-tag svg {
+    width: 14px;
+    height: 14px;
+    fill: var(--blue);
+    flex-shrink: 0;
+  }
+ 
+  .pricing-section h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 10px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+ 
+  .heading-underline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    margin-bottom: 18px;
+  }
+  .heading-underline span:first-child {
+    display: block;
+    width: 36px;
+    height: 3px;
+    background: var(--text);
+    border-radius: 2px;
+  }
+  .heading-underline span:last-child {
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: var(--blue);
+    border-radius: 50%;
+  }
+ 
+  .pricing-section .sub {
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    color: var(--gray);
+    max-width: 480px;
+    margin: 0 auto 52px;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+ 
+  /* ── GRID ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+    max-width: 960px;
+    margin: 0 auto 24px;
+  }
+ 
+  /* ── CARD ── */
+  .pricing-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 26px;
+    text-align: left;
+    position: relative;
+    transition: transform 0.22s, box-shadow 0.22s;
+  }
+  .pricing-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 44px rgba(42, 82, 212, 0.10);
+  }
+  .pricing-card.featured {
+    border-color: var(--blue);
+    box-shadow: 0 8px 28px rgba(42, 82, 212, 0.13);
+  }
+ 
+  .popular-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--blue);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    padding: 4px 18px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+ 
+  .card-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+  .icon-basic { background: #f0f4ff; }
+  .icon-pages { background: #e8f0ff; }
+  .icon-std   { background: #e8fff4; }
+ 
+  .card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+ 
+  .card-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.6;
+    margin-bottom: 18px;
+    font-weight: 400;
+  }
+ 
+  .card-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--blue);
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+  }
+  .card-price .sym {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gray);
+    vertical-align: super;
+  }
+  .card-price .range {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--gray);
+  }
+ 
+  .card-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 0 18px;
+  }
+ 
+  .card-features {
+    list-style: none;
+    margin-bottom: 26px;
+  }
+  .card-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    color: var(--gray);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .card-features li:last-child { border-bottom: none; }
+  .card-features li .ck {
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+ 
+  .card-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 11px 16px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+    text-decoration: none;
+  }
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--blue);
+    color: var(--blue);
+  }
+  .btn-outline:hover { background: var(--blue); color: var(--white); }
+  .btn-filled {
+    background: var(--blue);
+    color: var(--white);
+    border: 1.5px solid var(--blue);
+  }
+  .btn-filled:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+ 
+  /* ── ADDON BAR ── */
+  .addon-bar {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .addon-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .addon-icon {
+    width: 42px; height: 42px;
+    background: #fff4ee;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .addon-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .addon-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 2px;
+    font-weight: 400;
+  }
+  .addon-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .addon-price .sym {
+    font-size: 13px;
+    color: var(--gray);
+    font-weight: 400;
+  }
+ 
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .pricing-section { padding: 50px 5vw; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .addon-bar { flex-direction: column; align-items: flex-start; }
+  }
+</style>
 
+ 
+<section class="pricing-section">
+ 
+  <!-- Header — same style as uploaded image -->
+  <div class="section-tag">
+    <svg viewBox="0 0 16 16"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+    Pricing
+  </div>
+  <h2>Simple, Transparent Pricing</h2>
+  <div class="heading-underline">
+    <span></span>
+    <span></span>
+  </div>
+  <p class="sub">Choose the plan that fits your business. All packages include responsive design and professional delivery.</p>
+ 
+  <div class="pricing-grid">
+ 
+    <!-- Card 1 -->
+    <div class="pricing-card">
+      <div class="card-icon icon-basic">🪄</div>
+      <div class="card-title">Basic Landing Page</div>
+      <div class="card-desc">Perfect for a quick online presence or product launch.</div>
+      <div class="card-price"><span class="sym">₹</span>2,000 <span class="range">– ₹5,000</span></div>
+      <hr class="card-divider"/>
+      <ul class="card-features">
+        <li><span class="ck">✓</span> Single page</li>
+        <li><span class="ck">✓</span> HTML + CSS + JS</li>
+        <li><span class="ck">✓</span> Responsive design</li>
+        <li><span class="ck">✓</span> Header, Content, Contact, Footer</li>
+        <li><span class="ck">✓</span> Basic scroll navigation</li>
+      </ul>
+      <a href="https://forms.gle/vtGEEw1Jf2ZEMcWHA" class="card-btn btn-outline">Get Started</a>
+    </div>
+ 
+    <!-- Card 2 – Featured -->
+    <div class="pricing-card featured">
+      <div class="popular-badge">⭐ Most Popular</div>
+      <div class="card-icon icon-pages">📄</div>
+      <div class="card-title">Static Pages – Basic</div>
+      <div class="card-desc">Ideal for small businesses needing a proper web presence.</div>
+      <div class="card-price"><span class="sym">₹</span>5,000 <span class="range">– ₹8,000</span></div>
+      <hr class="card-divider"/>
+      <ul class="card-features">
+        <li><span class="ck">✓</span> 3–4 pages</li>
+        <li><span class="ck">✓</span> Home, About, Services, Contact</li>
+        <li><span class="ck">✓</span> Basic responsive layout</li>
+        <li><span class="ck">✓</span> Common header &amp; footer</li>
+      </ul>
+      <a href="https://forms.gle/vtGEEw1Jf2ZEMcWHA" class="card-btn btn-filled">Get Started</a>
+    </div>
+ 
+    <!-- Card 3 -->
+    <div class="pricing-card">
+      <div class="card-icon icon-std">🌐</div>
+      <div class="card-title">Static Website – Standard</div>
+      <div class="card-desc">Full-featured website for growing brands and businesses.</div>
+      <div class="card-price"><span class="sym">₹</span>10,000 <span class="range">– ₹20,000</span></div>
+      <hr class="card-divider"/>
+      <ul class="card-features">
+        <li><span class="ck">✓</span> 5–7 pages</li>
+        <li><span class="ck">✓</span> HTML + CSS, fully responsive</li>
+        <li><span class="ck">✓</span> Navigation menu</li>
+        <li><span class="ck">✓</span> Multiple sections per page</li>
+        <li><span class="ck">✓</span> Admin image update</li>
+      </ul>
+      <a href="https://forms.gle/vtGEEw1Jf2ZEMcWHA" class="card-btn btn-outline">Get Started</a>
+    </div>
+ 
+  </div>
+ 
+  <!-- Domain Add-on -->
+  <div class="addon-bar">
+    <div class="addon-left">
+      <div class="addon-icon">🔗</div>
+      <div>
+        <div class="addon-title">Domain Registration</div>
+        <div class="addon-sub">Add-on available with any plan above</div>
+      </div>
+    </div>
+    <div class="addon-price"><span class="sym">₹</span>1,000 – ₹1,500 / year</div>
+  </div>
+ 
+</section>
         <!-- Portfolio Start -->
         <div class="container-fluid py-5">
             <div class="container px-lg-5">
